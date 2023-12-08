@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\DeResource;
 use App\Models\De;
 use Illuminate\Http\Request;
+use PharIo\Version\Exception;
 
 class DeController extends Controller
 {
@@ -15,7 +16,13 @@ class DeController extends Controller
 
     public function show(Request $request, $id)
     {
-        $de = De::find($id);
-        return new DeResource($de);
+        try {
+            $de = De::find($id);
+            return new DeResource($de);
+        } catch (Exception $err){
+            return response()->json([
+                'message' => 'Id khong ton tai',
+            ], 500);
+    }
     }
 }

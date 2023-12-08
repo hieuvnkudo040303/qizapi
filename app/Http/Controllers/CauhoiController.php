@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\DeResource;
+use App\Models\Bai;
+use App\Models\Cauhoi;
+use App\Models\Chuong;
 use App\Models\De;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,5 +68,53 @@ class CauhoiController extends Controller
             ->where($dk)
             ->select('cauhois.*');
         return $result;
+    }
+    public  function createCauhoi(Request $request)
+    {
+        $v = $request->validate([
+            'name' => 'required',
+            'noidung' => 'required',
+            'mucdo' => 'required',
+            'kienthucId' => 'required',
+            'cauA' => 'required',
+            'cauB' => 'required',
+            'cauC' => 'required',
+            'cauD' => 'required',
+            'dung' => 'required',
+
+        ]);
+        $cauhoi = new Cauhoi();
+        $cauhoi->name = $v['name'];
+        $cauhoi->noidung = $v['noidung'];
+        $cauhoi->mucdo = $v['mucdo'];
+        $cauhoi->kienthuc_id = $v['kienthucId'];
+        if ($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/image'), $filename);
+            $cauhoi->image= $filename;
+        }
+        $cauhoi->save();
+        $id = $cauhoi->id;
+        $arr = [$v['cauA'], $v['cauB'], $v['cauC'], $v['cauD']];
+        $dung = $v['dung'];
+        for($i=0; $i<4; $i++){
+            if ($dung == $i){
+                DB::table('luachons')->insert([
+                    'noidung' => $arr[$i],
+                    'status' => true,
+                    'cauhoi_id' => $id
+                ]);
+            } else {
+                DB::table('luachons')->insert([
+                    'noidung' => $arr[$i],
+                    'status' => false,
+                    'cauhoi_id' => $id
+                ]);
+            }
+        }
+        return response()->json([
+            'url' => url('public/Image/'.$cauhoi->image)
+        ]);
     }
 }

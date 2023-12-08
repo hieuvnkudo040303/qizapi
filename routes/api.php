@@ -58,5 +58,9 @@ Route::prefix('traloi')->controller(TraloiController::class)->group(function () 
     Route::put('/', 'update');
 });
 
+Route::prefix('cauhoi')->controller(CauhoiController::class)->group(function () {
+    Route::post('/', 'createCauhoi');
+});
+
 
 

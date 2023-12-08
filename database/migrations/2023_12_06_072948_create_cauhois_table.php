@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('noidung');
             $table->integer('mucdo');
-            $table->foreignId('kienthuc_id')->constrained();
+            $table->string('image')->nullable();
+            $table->foreignId('kienthuc_id');
             $table->timestamps();
         });
     }
