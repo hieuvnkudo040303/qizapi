@@ -16,9 +16,15 @@ class CauhoiResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $r = null;
+        $image = $this->image;
+        if ($image){
+            $r = url('public/image/'.$image);
+        }
         return [
             'id' => $this->id,
             'noidung' => $this->noidung,
+            'image' => $r,
             'luachon' => LuachonResource::collection(Luachon::where('cauhoi_id', $this->id)->get()),
         ];
     }

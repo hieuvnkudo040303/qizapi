@@ -35,6 +35,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', 'reset');
     });
 
+    Route::prefix('traloi')->controller(TraloiController::class)->group(function () {
+        Route::get('/all', 'index');
+        Route::get('/{id}', 'show')->where('id', '[0-9]+');
+    });
 });
 
 Route::prefix('auth')->controller(AuthController::class)->group(function () {

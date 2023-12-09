@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
 //            TraloiSeeder::class,
 //        ]);
         $this->call([
+            UserSeeder::class,
             ChinhThucChuongSeeder::class,
             ChinhThucBaiSeeder::class,
             ChinhThucKienthucSeeder::class,
