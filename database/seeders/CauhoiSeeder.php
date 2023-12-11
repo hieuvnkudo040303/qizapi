@@ -17,6 +17,9 @@ class CauhoiSeeder extends Seeder
         $dem = 1;
         foreach ($kts as $kt){
             $id = $kt->id;
+            if ($id < 7){
+                continue;
+            }
             for($i=0; $i<5; $i++){
                 DB::table('cauhois')->insert([
                     'name' => 'Cau '.$dem,

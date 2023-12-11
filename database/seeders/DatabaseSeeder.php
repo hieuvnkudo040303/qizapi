@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             ChinhThucChuongSeeder::class,
             ChinhThucBaiSeeder::class,
             ChinhThucKienthucSeeder::class,
+            CauhoiSeeder::class,
+            LuachonSeeder::class,
         ]);
     }
 }

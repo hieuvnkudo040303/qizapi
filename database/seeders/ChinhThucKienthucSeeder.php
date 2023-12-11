@@ -14,10 +14,10 @@ class ChinhThucKienthucSeeder extends Seeder
     public function run(): void
     {
         $bais = DB::table('bais')->get();
-        $arr = ['Khái niệm', 'Tính chất', 'Dạng dễ', 'Dạng khó'];
+        $arr = ['Khái niệm', 'Tính chất', 'Định lí'];
         foreach ($bais as $bai){
             $id = $bai->id;
-            for($i=0; $i<4; $i++){
+            for($i=0; $i<3; $i++){
                 DB::table('kienthucs')->insert([
                     'name' => $arr[$i],
                     'noidung' => fake()->city(),
