@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 12, 2023 lúc 07:42 AM
+-- Thời gian đã tạo: Th12 12, 2023 lúc 02:44 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -41,12 +41,12 @@ CREATE TABLE `bais` (
 --
 
 INSERT INTO `bais` (`id`, `name`, `noidung`, `chuong_id`, `created_at`, `updated_at`) VALUES
-(1, 'Bài 1', 'Georgettebury', 1, NULL, NULL),
-(2, 'Bài 2', 'North Carrollside', 1, NULL, NULL),
-(3, 'Bài 3', 'Seanmouth', 1, NULL, NULL),
-(4, 'Bài 4', 'Russhaven', 1, NULL, NULL),
-(5, 'Bài 5', 'East Celestine', 1, NULL, NULL),
-(6, 'Bài 6', 'New Mavis', 1, NULL, NULL),
+(1, 'Bài 1', 'Sự phụ thuộc của cường độ dòng điện vào hiệu điện thế giữa hai đầu dây dẫn', 1, NULL, NULL),
+(2, 'Bài 2', 'Điện trở của dây dẫn - Định luật Ôm', 1, NULL, NULL),
+(3, 'Bài 3', 'Thực hành: Xác định điện trở của một dây dẫn bằng ampe kế và vôn kế', 1, NULL, NULL),
+(4, 'Bài 4', 'Đoạn mạch nối tiếp', 1, NULL, NULL),
+(5, 'Bài 5', 'Đoạn mạch song song', 1, NULL, NULL),
+(6, 'Bài 6', 'Bài tập vận dụng định luật Ôm', 1, NULL, NULL),
 (7, 'Bài 7', 'Langberg', 1, NULL, NULL),
 (8, 'Bài 8', 'North Shawna', 1, NULL, NULL),
 (9, 'Bài 9', 'North Maynardfort', 1, NULL, NULL),
@@ -60,10 +60,10 @@ INSERT INTO `bais` (`id`, `name`, `noidung`, `chuong_id`, `created_at`, `updated
 (17, 'Bài 17', 'East Vena', 1, NULL, NULL),
 (18, 'Bài 18', 'Jessicaland', 1, NULL, NULL),
 (19, 'Bài 19', 'Port Emmymouth', 1, NULL, NULL),
-(20, 'Bài 21', 'North Magdalen', 2, NULL, NULL),
-(21, 'Bài 22', 'South Isabella', 2, NULL, NULL),
-(22, 'Bài 23', 'Antoinetteside', 2, NULL, NULL),
-(23, 'Bài 24', 'Marvinmouth', 2, NULL, NULL),
+(20, 'Bài 21', 'Nam châm vĩnh cửu', 2, NULL, NULL),
+(21, 'Bài 22', 'Tác dụng từ của dòng điện - Từ trường', 2, NULL, NULL),
+(22, 'Bài 23', 'Từ phổ - Đường sức từ', 2, NULL, NULL),
+(23, 'Bài 24', 'Từ trường của ống dây có dòng điện chạy qua', 2, NULL, NULL),
 (24, 'Bài 25', 'Port Nya', 2, NULL, NULL),
 (25, 'Bài 26', 'Baumbachport', 2, NULL, NULL),
 (26, 'Bài 27', 'Yundtberg', 2, NULL, NULL),
@@ -230,6 +230,16 @@ CREATE TABLE `des` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `des`
+--
+
+INSERT INTO `des` (`id`, `user_id`, `name`, `socau`, `diem`, `created_at`, `updated_at`) VALUES
+(1, 1, 'De 5 cau', 5, 10, NULL, NULL),
+(2, 1, 'De 10 cau', 10, 10, NULL, NULL),
+(3, 1, 'De 15 cau', 15, 10, NULL, NULL),
+(4, 1, 'De 20 cau', 20, 10, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -266,11 +276,11 @@ CREATE TABLE `kienthucs` (
 --
 
 INSERT INTO `kienthucs` (`id`, `name`, `noidung`, `bai_id`, `created_at`, `updated_at`) VALUES
-(1, 'Khái niệm', 'Maggioshire', 1, NULL, NULL),
-(2, 'Tính chất', 'North Larissastad', 1, NULL, NULL),
-(3, 'Định lí', 'Port Sofia', 1, NULL, NULL),
-(4, 'Khái niệm', 'Agnesmouth', 2, NULL, NULL),
-(5, 'Tính chất', 'Yundtberg', 2, NULL, NULL),
+(1, 'Khái niệm', 'sự phụ thuộc của cường độ dòng điện vào hiệu điện thế', 1, NULL, NULL),
+(2, 'Tính chất', 'sự phụ thuộc cường độ dòng điện vào hiệu điện thế', 1, NULL, NULL),
+(3, 'Định luật Ôm', '  ', 1, NULL, NULL),
+(4, 'Khái niệm', 'Điện trở', 2, NULL, NULL),
+(5, 'Tính chất', 'Điện trở', 2, NULL, NULL),
 (6, 'Định lí', 'Port Jesusshire', 2, NULL, NULL),
 (7, 'Khái niệm', 'Andrewtown', 3, NULL, NULL),
 (8, 'Tính chất', 'Kallieville', 3, NULL, NULL),
@@ -841,6 +851,62 @@ CREATE TABLE `tralois` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tralois`
+--
+
+INSERT INTO `tralois` (`id`, `de_id`, `cauhoi_id`, `luachon_id`, `status`, `created_at`, `updated_at`) VALUES
+(2, 1, 92, 367, 1, NULL, NULL),
+(3, 1, 12, 45, 1, NULL, NULL),
+(4, 1, 18, 70, 1, NULL, NULL),
+(5, 1, 83, 332, 1, NULL, NULL),
+(6, 1, 76, 301, 1, NULL, NULL),
+(7, 2, 17, 65, 1, NULL, NULL),
+(8, 2, 87, 346, 1, NULL, NULL),
+(9, 2, 42, 167, 1, NULL, NULL),
+(10, 2, 20, 77, 1, NULL, NULL),
+(11, 2, 26, 101, 1, NULL, NULL),
+(12, 2, 48, 190, 1, NULL, NULL),
+(13, 2, 86, 342, 1, NULL, NULL),
+(14, 2, 50, 200, 1, NULL, NULL),
+(15, 2, 23, 90, 1, NULL, NULL),
+(16, 2, 5, 18, 1, NULL, NULL),
+(17, 3, 27, 105, 1, NULL, NULL),
+(18, 3, 50, 200, 1, NULL, NULL),
+(19, 3, 63, 251, 1, NULL, NULL),
+(20, 3, 57, 225, 1, NULL, NULL),
+(21, 3, 68, 272, 1, NULL, NULL),
+(22, 3, 53, 211, 1, NULL, NULL),
+(23, 3, 50, 200, 1, NULL, NULL),
+(24, 3, 15, 57, 1, NULL, NULL),
+(25, 3, 34, 134, 1, NULL, NULL),
+(26, 3, 41, 162, 1, NULL, NULL),
+(27, 3, 29, 113, 1, NULL, NULL),
+(28, 3, 88, 350, 1, NULL, NULL),
+(29, 3, 56, 223, 1, NULL, NULL),
+(30, 3, 85, 340, 1, NULL, NULL),
+(31, 3, 35, 137, 1, NULL, NULL),
+(32, 4, 24, 95, 1, NULL, NULL),
+(33, 4, 84, 336, 1, NULL, NULL),
+(34, 4, 10, 39, 1, NULL, NULL),
+(35, 4, 67, 266, 1, NULL, NULL),
+(36, 4, 94, 373, 1, NULL, NULL),
+(37, 4, 41, 162, 1, NULL, NULL),
+(38, 4, 82, 327, 1, NULL, NULL),
+(39, 4, 42, 167, 1, NULL, NULL),
+(40, 4, 38, 150, 1, NULL, NULL),
+(41, 4, 46, 183, 1, NULL, NULL),
+(42, 4, 94, 373, 1, NULL, NULL),
+(43, 4, 34, 134, 1, NULL, NULL),
+(44, 4, 81, 323, 1, NULL, NULL),
+(45, 4, 18, 70, 1, NULL, NULL),
+(46, 4, 35, 137, 1, NULL, NULL),
+(47, 4, 93, 369, 1, NULL, NULL),
+(48, 4, 81, 323, 1, NULL, NULL),
+(49, 4, 70, 280, 1, NULL, NULL),
+(50, 4, 40, 158, 1, NULL, NULL),
+(51, 4, 3, 12, 1, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -977,7 +1043,7 @@ ALTER TABLE `chuongs`
 -- AUTO_INCREMENT cho bảng `des`
 --
 ALTER TABLE `des`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -1007,13 +1073,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tralois`
 --
 ALTER TABLE `tralois`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

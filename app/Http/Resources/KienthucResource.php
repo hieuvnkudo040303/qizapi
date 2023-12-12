@@ -17,6 +17,7 @@ class KienthucResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'noidung' => $this->noidung,
             'baiId' => $this->bai_id,
         ];
     }

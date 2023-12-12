@@ -32,7 +32,7 @@ class TraloiController extends Controller
             ->join('cauhois', 'tralois.cauhoi_id', '=', 'cauhois.id')
             ->join('kienthucs', 'cauhois.kienthuc_id','=', 'kienthucs.id')
             ->where($dk)
-            ->select('tralois.id','des.name as nameDe','tralois.status', 'cauhois.kienthuc_id', 'kienthucs.name')
+            ->select('tralois.id','des.name as nameDe','tralois.status', 'cauhois.kienthuc_id', 'kienthucs.name', 'kienthucs.noidung')
             ->distinct();
         return $result;
     }

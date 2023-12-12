@@ -17,6 +17,7 @@ class BaiResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'noidung' => $this->noidung,
             'chuongId' => $this->chuong_id
         ];
     }
