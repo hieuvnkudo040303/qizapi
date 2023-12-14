@@ -38,7 +38,7 @@ class CauhoiController extends Controller
         $r = $r->inRandomOrder();
         $de = new De();
         $de->name = $namede;
-        $de->socau = $r->count('id');
+        $de->socau = $socau;
         $de->diem = 0;
         $de->user_id = $user->id;
         $de->save();
